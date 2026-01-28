@@ -15,7 +15,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-const connectionString = "mongodb+srv://ayushsingh_db_user:ayush007@cluster0.sovj8vj.mongodb.net/?appName=Cluster0"
+const connectionString = "MongoDB_Atlas_Connection_String"
 const dbName = "netflix"
 const colName = "watchlist"
 
