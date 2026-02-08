@@ -2,6 +2,8 @@ package main
 
 import (
 	"go_gin/controllers"
+	internal "go_gin/internal/database"
+	"go_gin/services"
 
 	"github.com/gin-gonic/gin"
 )
@@ -23,6 +25,14 @@ import (
 
 func main() {
 	router := gin.Default()
+	db := internal.InitDB()
+
+	if db == nil {
+		return
+	}
+
+	notesService := &services.NotesService{}
+	notesService.InitService(db)
 
 	//Test pings
 	// r.GET("/ping", func(c *gin.Context) {
@@ -107,7 +117,7 @@ func main() {
 	// }
 
 	notesController := &controllers.NotesController{}
-	notesController.InitNotesControlerRoutes(router)
+	notesController.InitNotesControlerRoutes(router, *notesService)
 
-	router.Run()
+	router.Run(":8000")
 }

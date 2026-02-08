@@ -1,0 +1,8 @@
+# Binaries
+app
+gorm
+
+# Go build artifacts
+*.exe
+*.out
+*.test
